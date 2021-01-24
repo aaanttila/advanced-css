@@ -1,0 +1,80 @@
+.row {
+    //1140px is standard maximum width for row in a grid
+    max-width: $grid-width-standard;
+    //centering block elements, auto will set left and right to same
+    margin: 0 auto;
+    //set margin bottom, except for the last row
+    &:not(:last-child) {
+        margin-bottom: $grid-gutter-v;
+    }
+    //NOTE:all child elements(girds) are floated, so they have have heigth=0
+    // clearfix appends pseudo elements after it with clears both
+    @include clearfix;
+    // do for all the elements inside row, which have a class attribute, and value STARING WITH (the ^ ) "col-"
+    [class^="col-"] {
+        float: left;
+        &:not(:last-child) {
+            margin-right: $grid-gutter-h;
+        }
+        //[class*="col-"] would choose all the class attributes that CONTAINS the "col-" in their value
+        //[class$="col-"] would choose all the class attributes that ENDS WITH the "col-" in their value
+    }
+    .col-1-2 {
+        width: calc((100% - #{$grid-gutter-h}) / 2);
+    }
+    .col-1-3 {
+        width: calc((100% - #{$grid-gutter-h} * 2) / 3);
+    }
+    .col-1-4 {
+        width: calc((100% - #{$grid-gutter-h} * 3) / 4);
+    }
+    .col-2-3 {
+        // 2 times col-1-3 width + one gutter width
+        width: calc(2 * ((100% - #{$grid-gutter-h} * 2) / 3) + #{$grid-gutter-h});
+    }
+    .col-2-4 {
+        // 2 times col-1-4 width + one gutter width
+        width: calc(2 * ((100% - #{$grid-gutter-h} * 3) / 4) + #{$grid-gutter-h});
+    }
+    .col-3-4 {
+        // 3 times col-1-4 width + (2 gutter widths)
+        width: calc(3 * ((100% - #{$grid-gutter-h} * 3) / 4) + (#{$grid-gutter-h} * 2));
+    }
+    /* html for testing
+     <section class="grid-test">
+        <div class="row">
+            <div class="col-1-2">col 1 2</div>
+            <div class="col-1-2">col 1 2</div>
+        </div>
+        <div class="row">
+            <div class="col-1-3">col 1 3</div>
+            <div class="col-1-3">col 1 3</div>
+            <div class="col-1-3">col 1 3</div>
+        </div>
+
+        <div class="row">
+            <div class="col-1-3">col 1 3</div>
+            <div class="col-2-3">col 2 3</div>
+        </div>
+
+        <div class="row">
+            <div class="col-1-4">col 1 4</div>
+            <div class="col-1-4">col 1 4</div>
+            <div class="col-1-4">col 1 4</div>
+            <div class="col-1-4">col 1 4</div>
+
+        </div>
+        <div class="row">
+            <div class="col-1-4">col 1 4</div>
+            <div class="col-1-4">col 1 4</div>
+            <div class="col-2-4">col 2 4</div>
+        </div>
+
+        <div class="row">
+            <div class="col-1-4">col 1 4</div>
+            <div class="col-3-4">col 3 4</div>
+        </div>
+    </section>
+
+    */
+}

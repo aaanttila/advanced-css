@@ -1,0 +1,14 @@
+@mixin clearfix {
+    /*
+    clearfix hack appends a sudo element to the target elements with floats,
+    and clears the float away, thus the elements will have a sensible height value
+    */
+    &::after {
+        //pseudo element must have content property, for it to be included in the layout calculations
+        content: "";
+        // standard is to give the display table property to clearfix
+        display: table;
+        //clear, clears (moves below, the elements that precede it) float property
+        clear: both;
+    }
+}

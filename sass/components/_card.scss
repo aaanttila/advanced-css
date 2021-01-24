@@ -1,0 +1,96 @@
+$card-height: 53rem;
+.card {
+    // perspective means how far away the element is from 'touching the screen'
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    &__side {
+        transition: transform .8s ease;
+        height: $card-height;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        //0 to x direction, 1.5rem to y, 4rem blur, shadow color black*0.15%
+        box-shadow: 0 1.5rem 4rem $default-shadow-color;
+        overflow: hidden;
+        &--front {
+            background-color: $color-white;
+        }
+        &--back {
+            margin-top: -$card-height;
+            transform: rotateY(-180deg);
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+    &__picture {
+        background-size: cover;
+        background-blend-mode: overlay;
+        height: 25rem;
+        -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 95%);
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 95%);
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../images/nat-5.jpg);
+        }
+        &--2 {
+            background-image: url(../images/nat-6.jpg);
+        }
+        &--3 {
+            background-image: url(../images/nat-7.jpg);
+        }
+    }
+    &__heading {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 50%;
+    }
+    //not a modifier nor a child of heading, but a new element
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        // apply decorations to all the box-elements/boxes in the elements
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
+    }
+    &__details {
+        padding: 3rem;
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-1;
+                }
+            }
+        }
+    }
+}

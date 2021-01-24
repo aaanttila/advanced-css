@@ -1,0 +1,42 @@
+@import "abstract/functions";
+@import "abstract/mixins";
+@import "abstract/variables";
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
+@import "pages/home";
+@import "components/button";
+@import "layout/header";
+@import "layout/grid";
+@import "components/compositions";
+@import "components/feature-box";
+@import "components/card";
+
+/* basic reset: the defaults to have a known baseline tos start with */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /*all the elements which do not specify box-sizing will inherit the border-box value from body*/
+    box-sizing: inherit;
+}
+
+html {
+    /*1rem = root font-size*/
+    /*browser default = 16px*/
+    /*62.5% of 16px = 10px*/
+    /*this defines what one rem is*/
+    font-size: 62.5%;
+}
+
+
+/* setting of the attributes in the body elements, leverages the inheritance for the properties that support inheritance.  */
+
+body {
+    /* with the following, paddings and borders are calculated to the width and height of the element, only content width */
+    /*with this padding and border will decrease the content area, instead of being added to it, so specified width is seen on the screen, not width+padding+borders*/
+    box-sizing: border-box;
+}

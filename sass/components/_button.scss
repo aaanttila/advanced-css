@@ -1,0 +1,75 @@
+.btn {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        position: relative;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 15px 40px;
+        /* parent has text-align center, this is inline-block, so will be centered by that attribute*/
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .1s;
+    }
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem $default-shadow-color;
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    &:active {
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem $default-shadow-color;
+    }
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    &::after {
+        /*content attribute has to be specified in pseudo element, empty if nothing else*/
+        content: "";
+        /*display attribute has to be specified in pseudo element, empty if nothing else*/
+        display: inline-block;
+        /*pseudo elements are treated as child elements of the target, so 100% means 100% of the parent*/
+        width: 100%;
+        height: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .5s;
+    }
+    &--animated {
+        animation: moveInBottom .5s .75s;
+        animation-fill-mode: backwards;
+    }
+}
+
+.button-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        //if not target is not inline by default, with display: inline we can use padding, margin and all the good stuff
+        display: inline;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+    }
+    &:hover {
+        color: $color-white;
+        background-color: $color-primary;
+        box-shadow: 0 1rem 2rem $default-shadow-color;
+        transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: 0 .5rem 2rem $default-shadow-color;
+        transform: translateY(0);
+    }
+}
