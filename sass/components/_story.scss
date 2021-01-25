@@ -4,7 +4,7 @@
     // centering when a block element inside a block element
     margin: 0 auto;
     box-shadow: 0 3rem 6rem $default-shadow-color;
-    border-radius: 3px;
+    border-radius: $default-border-radius;
     background-color: rgba($color-white, .6);
     padding: 6rem;
     // padding left is the 6 plus the tranform of 3rem of the figure to the left 

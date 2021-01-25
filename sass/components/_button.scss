@@ -1,4 +1,5 @@
 .btn {
+    &,
     &:link,
     &:visited {
         font-size: $default-font-size;
@@ -10,6 +11,9 @@
         display: inline-block;
         border-radius: 10rem;
         transition: all .1s;
+        // change for use of button element instead of anchor element
+        border: none;
+        cursor: pointer;
     }
     &:hover {
         transform: translateY(-.3rem);
@@ -19,7 +23,8 @@
             opacity: 0;
         }
     }
-    &:active {
+    &:active,
+    &:focus {
         transform: translateY(-.1rem);
         box-shadow: 0 .5rem 1rem $default-shadow-color;
     }

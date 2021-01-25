@@ -7,7 +7,7 @@ $card-height: 53rem;
         transition: transform .8s ease;
         height: $card-height;
         backface-visibility: hidden;
-        border-radius: 3px;
+        border-radius: $default-border-radius;
         //0 to x direction, 1.5rem to y, 4rem blur, shadow color black*0.15%
         box-shadow: 0 1.5rem 4rem $default-shadow-color;
         overflow: hidden;
