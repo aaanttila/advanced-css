@@ -1,0 +1,98 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color-black, .9);
+    z-index: 100;
+    //hidden by default, until opened
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+    &__box {
+        width: 70%;
+        position: absolute;
+        @include center-horizontal-vertical;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem $default-shadow-color;
+        border-radius: 3px;
+        display: table;
+        overflow: hidden;
+        opacity: 0;
+        // element can only have one transform, and mixin enter-horizontal-vertical
+        // already has one so to keep it we need to repeat it here
+        transform: translate(-50%, -50%) scale(0);
+        transition: all .3s .2s;
+    }
+    // when the popup element becomes the target/url changes to xxx/#popups, apply pseudo class styles
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+    // when popup becomes the target select popup__box and apply
+    &:target &__box {
+        opacity: 1;
+        // element can only have one transform, and mixin enter-horizontal-vertical
+        // already has one so to keep it we need to repeat it here
+        transform: translate(-50%, -50%) scale(1);
+    }
+    &__left {
+        width: 33.3333%;
+        /*
+        float left could be used to get __left and __right side by side, but then the heights wouldnt be the same
+        */
+        //float: left;
+        /*
+        instead use display: table-cell, and vertical-align:middle, for child elements, and display: table for the parent, popup__box
+        */
+        display: table-cell;
+        vertical-align: middle;
+    }
+    &__right {
+        width: 66.6666%;
+        /*
+        float left could be used to get __left and __right side by side, but then the heights wouldnt be the same
+        */
+        //float: left;
+        /*
+        instead use display: table-cell, and vertical-align:middle, and display: table for the parent, popup__box
+        */
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+    }
+    &__image {
+        display: block;
+        width: 100%;
+    }
+    &__text {
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-grey-light-2;
+        text-align: justify;
+        // for this to work html tag needs to have the lang attribute value set to some locale/lang-code
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+    &__close {
+        &:link,
+        &:visited {
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            //text-element has a pre-defined line height, resetting it to one
+            line-height: 1;
+        }
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
